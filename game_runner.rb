@@ -1,8 +1,17 @@
 require('pry-byebug')
 require_relative('game')
+require_relative('win_checker')
+require_relative('rubbish_win_checker')
+
+
 
 # create game
-game = Game.new()
+win_checker_1 = WinChecker.new()
+rubbish = Rubbish_Win_Checker.new()
+
+
+game = Game.new(rubbish)
+
 # place piece
 # game.turn(0,0)
 
@@ -66,7 +75,7 @@ game.turn(1,1)
 game.turn(2,0)
 game.turn(2,2)
 
-puts "checking if game is won on a diagonal. #{game.has_won?(piece)} expect to be true"
+puts "checking if game is won on a diagonal. #{win_checker.has_won?(piece)} expect to be true"
 game.new_game
 
 # test displaying row - not useful for regular use, just in testing
